@@ -10,6 +10,9 @@ searchedCityEl = document.getElementById("currentcity");
 
 
 
+
+
+
 function weather(cityname){
     var apiKey = "d97492f6728a5e2faeaebeba5d577ddf";
     var apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + cityname + "&appid=" + apiKey;
@@ -17,6 +20,10 @@ function weather(cityname){
         if(response.ok){
             response.json().then(function(response) {
                 console.log(response);
+                cityNameEl.textContent = searchedCityEl.value;
+                temperatureEl.textContent = "Temperature: " + response.main.temp + "F";
+                humidityEl.textContent = "Humidity: " +  response.main.humidity + "%";
+                windEl.textContent = "Wind: " + response.wind.speed + "MPH";
               })
             } else {
               alert("enter valid city");
@@ -26,6 +33,10 @@ function weather(cityname){
 
 };
 
+
+function displayToday(){
+
+}
 
 
 
