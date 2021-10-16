@@ -7,7 +7,7 @@ windEl = document.getElementById("wind");
 uvindexEl = document.getElementById("uvindex");
 forecastBody = document.getElementById("5forecast");
 searchedCityEl = document.getElementById("currentcity");
-
+var searchedCities = [];
 
 
 
@@ -19,11 +19,21 @@ function weather(cityname){
     fetch(apiUrl).then(function(response){
         if(response.ok){
             response.json().then(function(response) {
-                console.log(response);
+                // console.log(response);
                 cityNameEl.textContent = searchedCityEl.value;
                 temperatureEl.textContent = "Temperature: " + response.main.temp + "F";
                 humidityEl.textContent = "Humidity: " +  response.main.humidity + "%";
                 windEl.textContent = "Wind: " + response.wind.speed + "MPH";
+
+                var lat = response.coord.lat;
+                var lon = response.coord.lon;
+                var uvUrl = "https://api.openweathermap.org/data/2.5/onecall?&lat=" + lat +"&lon=" + lon + "&appid=" + apiKey;
+                fetch(uvUrl).then(function(response){
+                    response.json().then(function(response){
+                        // console.log(response);
+                        uvindexEl.textContent = "UV index: " + response.current.uvi;
+                    })
+                })
               })
             } else {
               alert("enter valid city");
@@ -34,9 +44,6 @@ function weather(cityname){
 };
 
 
-function displayToday(){
-
-}
 
 
 
