@@ -21,7 +21,7 @@ function weather(cityname){
             response.json().then(function(response) {
                 // console.log(response);
                 cityNameEl.textContent = searchedCityEl.value;
-                temperatureEl.textContent = "Temperature: " + response.main.temp + "F";
+                temperatureEl.textContent = "Temperature: " + tempConversion(response.main.temp) + "F";
                 humidityEl.textContent = "Humidity: " +  response.main.humidity + "%";
                 windEl.textContent = "Wind: " + response.wind.speed + "MPH";
 
@@ -43,7 +43,12 @@ function weather(cityname){
 
 };
 
-
+function tempConversion(i){
+     i = (i - 273.15) * 9/5 + 32;
+     return Math.floor(i);
+    //  console.log(i);
+     
+}
 
 
 
