@@ -94,8 +94,20 @@ function weather(cityname){
             }
         }
     )
-
+        saveCities();
 };
+
+function saveCities(){
+    var cityname = searchedCityEl.value;
+    searchedCities.push(cityname);
+    localStorage.setItem("cities", JSON.stringify(searchedCities));
+}
+
+function loadCities(){
+   var loadedCities =  JSON.parse(localStorage.getItem("cities"));
+   cityHistoryEl.textContent = loadedCities;
+   return loadedCities;
+}
 
 function tempConversion(i){
      i = (i - 273.15) * 9/5 + 32;
@@ -105,7 +117,7 @@ function tempConversion(i){
 }
 
 
-
+loadCities();
 
 searchButtonEl.addEventListener("click", function(){
     var cityname = searchedCityEl.value;
