@@ -63,6 +63,15 @@ function weather(cityname){
                     response.json().then(function(response){
                         // console.log(response);
                         uvindexEl.textContent = "UV index: " + response.current.uvi;
+                        if (response.current.uvi < 5){
+                            uvindexEl.classList.add("bg-success")
+                        }
+                        else if(response.current.uvi >= 5 && response.current.uvi < 10){
+                            uvindexEl.classList.add("bg-warning")
+                        }
+                        else{
+                            uvindexEl.classList.add("bg-danger")
+                        }
                     })
                 })
                 var forecastUrl = "https://api.openweathermap.org/data/2.5/forecast?q=" + cityname + "&units=imperial" + "&appid=" + apiKey;
