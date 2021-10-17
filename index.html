@@ -10,14 +10,16 @@
     <title>Weather Dashboard</title>
 </head>
 <body>
-    <header> <h1> Weather Dashboard </h1>  </header>
+    <header class="bg-dark text-center"> <h1 class="text-white"> Weather Dashboard </h1>  </header>
     <main>
         <div class="row">
             <div class="col-4">
                 <h2>Search for a city</h2>
-                <input type="text" placeholder="Enter city name" id="currentcity">
-                <button id="searchbutton" type="submit"> Search </button>
-                <form id="cityhistory"></form>
+                <div class="row">
+                <input class="col-12" type="text" placeholder="Enter city name" id="currentcity">
+                <button class="col-12 bg-primary text-white" id="searchbutton" type="submit"> Search </button>
+                </div>
+                <form id="cityhistory" class="card"></form>
             </div>
             <div class="col-8">
                 <div class="row">
@@ -46,11 +48,11 @@
                     </div>
                 </div>
                 <div class="row" id="5forecast">
-                    <div class="col forecast" id="day1"> <p id="upcomingday1"></p> <p id="temperature1"></p> <p id="humidity1"></p> <p id="wind1"></p> </div>
-                    <div class="col forecast" id="day2"> <p id="upcomingday2"></p> <p id="temperature2"></p> <p id="humidity2"></p> <p id="wind2"></p> </div>
-                    <div class="col forecast" id="day3"> <p id="upcomingday3"></p> <p id="temperature3"></p> <p id="humidity3"></p> <p id="wind3"></p> </div>
-                    <div class="col forecast" id="day4"> <p id="upcomingday4"></p> <p id="temperature4"></p> <p id="humidity4"></p> <p id="wind4"></p> </div>
-                    <div class="col forecast" id="day5"> <p id="upcomingday5"></p> <p id="temperature5"></p> <p id="humidity5"></p> <p id="wind5"></p> </div>
+                    <div class="col forecast card" id="day1"> <p id="upcomingday1"></p> <p id="temperature1"></p> <p id="humidity1"></p> <p id="wind1"></p> </div>
+                    <div class="col forecast card" id="day2"> <p id="upcomingday2"></p> <p id="temperature2"></p> <p id="humidity2"></p> <p id="wind2"></p> </div>
+                    <div class="col forecast card" id="day3"> <p id="upcomingday3"></p> <p id="temperature3"></p> <p id="humidity3"></p> <p id="wind3"></p> </div>
+                    <div class="col forecast card" id="day4"> <p id="upcomingday4"></p> <p id="temperature4"></p> <p id="humidity4"></p> <p id="wind4"></p> </div>
+                    <div class="col forecast card" id="day5"> <p id="upcomingday5"></p> <p id="temperature5"></p> <p id="humidity5"></p> <p id="wind5"></p> </div>
                 </div>
             </div>
         </div>
