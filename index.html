@@ -22,7 +22,10 @@
             <div class="col-8">
                 <div class="row">
                     <div class="col-12">
-                        <p id="cityname"></p>
+                        <div class="row">
+                        <p id="cityname" class="col"></p>
+                        <p id="today" class="col"></p>
+                        </div>
                     </div>
                     <div class="col-12">
                         <p id="temperature"></p>
@@ -43,16 +46,17 @@
                     </div>
                 </div>
                 <div class="row" id="5forecast">
-                    <div class="col forecast" id="day1"></div>
-                    <div class="col forecast" id="day2"></div>
-                    <div class="col forecast" id="day3"></div>
-                    <div class="col forecast" id="day4"></div>
-                    <div class="col forecast" id="day5"></div>
+                    <div class="col forecast" id="day1"> <p id="upcomingday1"></p> <p id="temperature1"></p> <p id="humidity1"></p> <p id="wind1"></p> </div>
+                    <div class="col forecast" id="day2"> <p id="upcomingday2"></p> <p id="temperature2"></p> <p id="humidity2"></p> <p id="wind2"></p> </div>
+                    <div class="col forecast" id="day3"> <p id="upcomingday3"></p> <p id="temperature3"></p> <p id="humidity3"></p> <p id="wind3"></p> </div>
+                    <div class="col forecast" id="day4"> <p id="upcomingday4"></p> <p id="temperature4"></p> <p id="humidity4"></p> <p id="wind4"></p> </div>
+                    <div class="col forecast" id="day5"> <p id="upcomingday5"></p> <p id="temperature5"></p> <p id="humidity5"></p> <p id="wind5"></p> </div>
                 </div>
             </div>
         </div>
     </main>
     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
 </html>
