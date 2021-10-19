@@ -146,28 +146,51 @@ function weather(cityname){
 
 function saveCities(){
     var cityname = searchedCityEl.value;
+    if (searchedCities.indexOf(cityname)===-1){
     searchedCities.push(cityname);
     localStorage.setItem("cities", JSON.stringify(searchedCities));
+    }
+    
     return searchedCities.value;
+    
+
 }
 
 function loadCities(){
-    
-    var loadCities =   JSON.parse(localStorage.getItem("cities"));
+    // cityHistoryEl.innerHTML = "";
+    var loadCities =   JSON.parse(localStorage.getItem("cities")) || [];
+    // if(loadCities.length !==0){
     for (let i = 0; i < loadCities.length; i++) {
+        
         var city = loadCities[i];
         
     
-    var searchedHistoryEl = document.createElement("li");
-    searchedHistoryEl.classList.add("col-12");
+    var searchedHistoryEl = document.createElement("button");
+    // searchedHistoryEl.classList.add("col-12");
+    searchedHistoryEl.setAttribute("type", "text");
+    // searchedHistoryEl.setAttribute("readonly", true);
+    searchedHistoryEl.setAttribute("value", loadCities[i]);
+    searchedHistoryEl.textContent = city;
+    searchedHistoryEl.addEventListener("click", function(event){
+        
+        weather(loadCities[i]);
+        cityNameEl.textContent = loadCities[i];
+        event.preventDefault();
+    })
 //    var loadedCities =  JSON.parse(localStorage.getItem("cities"));
     // searchedHistoryEl = JSON.parse(localStorage.getItem("cities"));
-   searchedHistoryEl.textContent = city;
+   
    cityHistoryEl.append(searchedHistoryEl);
-    }
-//    return loadedCities;
+    // }}
+    // else{
+    //     searchButtonEl.addEventListener("click", function(){
+    //         var cityname = searchedCityEl.value;
+    //         weather(cityname);
+    // })
 }
+//    return loadedCities;
 
+}
 function tempConversion(i){
      i = (i - 273.15) * 9/5 + 32;
      return Math.floor(i);
