@@ -34,7 +34,13 @@ day3El = document.getElementById("day3");
 day4El = document.getElementById("day4");
 day5El = document.getElementById("day5");
 nameDivEl = document.getElementById("namediv");
-var searchedCities = [];
+iconEl = document.getElementById("icon");
+icon1El = document.getElementById("icon1");
+icon2El = document.getElementById("icon2");
+icon3El = document.getElementById("icon3");
+icon4El = document.getElementById("icon4");
+icon5El = document.getElementById("icon5");
+var searchedCities = JSON.parse(localStorage.getItem("cities")) || [];
 
 
 
@@ -47,9 +53,12 @@ function weather(cityname){
         if(response.ok){
             response.json().then(function(response) {
                 console.log(response);
+                // event.preventDefault();
                 var weatherIconEl = document.createElement("img");
                 weatherIconEl.setAttribute("src", "https://openweathermap.org/img/wn/" + response.weather[0].icon + "@2x.png");
-                nameDivEl.append(weatherIconEl);
+                iconEl.innerHTML = "";
+                iconEl.append(weatherIconEl);
+                // nameDivEl.append(weatherIconEl);
                 cityNameEl.textContent = searchedCityEl.value ;
                 todayEl.textContent = moment().format("MMM Do YY");
                 temperatureEl.textContent = "Temperature: " + tempConversion(response.main.temp) + "F";
@@ -80,35 +89,45 @@ function weather(cityname){
                             // console.log(response);
                             var weatherIcon1El = document.createElement("img");
                             weatherIcon1El.setAttribute("src", "https://openweathermap.org/img/wn/" + response.list[0].weather[0].icon + "@2x.png");
-                            day1El.append(weatherIcon1El);
+                            icon1El.innerHTML = "";
+                            icon1El.append(weatherIcon1El);
+                            // day1El.append(weatherIcon1El);
                             upcomingDay1El.textContent =  (moment().add(1, "days").format("MMM Do YY"));
                             temperature1El.textContent = "Temperature: " + response.list[0].main.temp + "F";
                             humidity1El.textContent = "Humidity: " + response.list[0].main.humidity + "%";
                             wind1El.textContent =  "Wind: " + response.list[0].wind.speed + "MPH";
                             var weatherIcon2El = document.createElement("img");
                             weatherIcon2El.setAttribute("src", "https://openweathermap.org/img/wn/" + response.list[8].weather[0].icon + "@2x.png");
-                            day2El.append(weatherIcon2El);
+                            icon2El.innerHTML = "";
+                            icon2El.append(weatherIcon2El);
+                            // day2El.append(weatherIcon2El);
                             upcomingDay2El.textContent =  (moment().add(2, "days").format("MMM Do YY"));
                             temperature2El.textContent = "Temperature: " + response.list[8].main.temp + "F";
                             humidity2El.textContent = "Humidity: " + response.list[8].main.humidity + "%";
                             wind2El.textContent = "Wind: " + response.list[8].wind.speed + "MPH";
                             var weatherIcon3El = document.createElement("img");
                             weatherIcon3El.setAttribute("src", "https://openweathermap.org/img/wn/" + response.list[16].weather[0].icon + "@2x.png");
-                            day3El.append(weatherIcon3El);
+                            icon3El.innerHTML = "";
+                            icon3El.append(weatherIcon3El);
+                            // day3El.append(weatherIcon3El);
                             upcomingDay3El.textContent =  (moment().add(3, "days").format("MMM Do YY"));
                             temperature3El.textContent = "Temperature: " +  response.list[16].main.temp + "F" ;
                             humidity3El.textContent = "Humidity: " + response.list[16].main.humidity + "%";
                             wind3El.textContent = "Wind: " + response.list[16].wind.speed + "MPH";
                             var weatherIcon4El = document.createElement("img");
                             weatherIcon4El.setAttribute("src", "https://openweathermap.org/img/wn/" + response.list[24].weather[0].icon + "@2x.png");
-                            day4El.append(weatherIcon4El);
+                            icon4El.innerHTML = "";
+                            icon4El.append(weatherIcon4El);
+                            // day4El.append(weatherIcon4El);
                             upcomingDay4El.textContent =  (moment().add(4, "days").format("MMM Do YY"));
                             temperature4El.textContent = "Temperature: " + response.list[24].main.temp + "F";
                             humidity4El.textContent = "Humidity: " + response.list[24].main.humidity + "%";
                             wind4El.textContent = "Wind: " + response.list[24].wind.speed + "MPH";
                             var weatherIcon5El = document.createElement("img");
                             weatherIcon5El.setAttribute("src", "https://openweathermap.org/img/wn/" + response.list[32].weather[0].icon + "@2x.png");
-                            day5El.append(weatherIcon5El);
+                            icon5El.innerHTML = "";
+                            icon5El.append(weatherIcon5El);
+                            // day5El.append(weatherIcon5El);
                             upcomingDay5El.textContent =  (moment().add(5, "days").format("MMM Do YY"));
                             temperature5El.textContent = "Temperature: " + response.list[32].main.temp + "F";
                             humidity5El.textContent = "Humidity: " + response.list[32].main.humidity + "%";
@@ -129,12 +148,24 @@ function saveCities(){
     var cityname = searchedCityEl.value;
     searchedCities.push(cityname);
     localStorage.setItem("cities", JSON.stringify(searchedCities));
+    return searchedCities.value;
 }
 
 function loadCities(){
-   var loadedCities =  JSON.parse(localStorage.getItem("cities"));
-   cityHistoryEl.textContent = loadedCities;
-   return loadedCities;
+    
+    var loadCities =   JSON.parse(localStorage.getItem("cities"));
+    for (let i = 0; i < loadCities.length; i++) {
+        var city = loadCities[i];
+        
+    
+    var searchedHistoryEl = document.createElement("li");
+    searchedHistoryEl.classList.add("col-12");
+//    var loadedCities =  JSON.parse(localStorage.getItem("cities"));
+    // searchedHistoryEl = JSON.parse(localStorage.getItem("cities"));
+   searchedHistoryEl.textContent = city;
+   cityHistoryEl.append(searchedHistoryEl);
+    }
+//    return loadedCities;
 }
 
 function tempConversion(i){

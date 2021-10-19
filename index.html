@@ -19,7 +19,7 @@
                 <input class="col-12" type="text" placeholder="Enter city name" id="currentcity">
                 <button class="col-12 bg-primary text-white" id="searchbutton" type="submit"> Search </button>
                 </div>
-                <form id="cityhistory" class="card"></form>
+                <ul id="cityhistory" class="card row"></ul>
             </div>
             <div class="col-8">
                 <div class="row card">
@@ -27,6 +27,7 @@
                         <div class="row d-inline-flex" id="namediv">
                         <h3 id="cityname" class="col"></h3>
                         <p id="today" class="col"></p>
+                        <div id="icon"></div>
                         </div>
                     </div>
                     <div class="col-12">
@@ -48,11 +49,11 @@
                     </div>
                 </div>
                 <div class="row" id="5forecast">
-                    <div class="col forecast card bg-dark text-white" id="day1"> <p id="upcomingday1"></p> <p id="temperature1"></p> <p id="humidity1"></p> <p id="wind1"></p> </div>
-                    <div class="col forecast card bg-dark text-white" id="day2"> <p id="upcomingday2"></p> <p id="temperature2"></p> <p id="humidity2"></p> <p id="wind2"></p> </div>
-                    <div class="col forecast card bg-dark text-white" id="day3"> <p id="upcomingday3"></p> <p id="temperature3"></p> <p id="humidity3"></p> <p id="wind3"></p> </div>
-                    <div class="col forecast card bg-dark text-white" id="day4"> <p id="upcomingday4"></p> <p id="temperature4"></p> <p id="humidity4"></p> <p id="wind4"></p> </div>
-                    <div class="col forecast card bg-dark text-white" id="day5"> <p id="upcomingday5"></p> <p id="temperature5"></p> <p id="humidity5"></p> <p id="wind5"></p> </div>
+                    <div class="col forecast card bg-dark text-white" id="day1"> <p id="upcomingday1"></p><div id="icon1"></div> <p id="temperature1"></p> <p id="humidity1"></p> <p id="wind1"></p> </div>
+                    <div class="col forecast card bg-dark text-white" id="day2"> <p id="upcomingday2"></p><div id="icon2"></div> <p id="temperature2"></p> <p id="humidity2"></p> <p id="wind2"></p> </div>
+                    <div class="col forecast card bg-dark text-white" id="day3"> <p id="upcomingday3"></p><div id="icon3"></div> <p id="temperature3"></p> <p id="humidity3"></p> <p id="wind3"></p> </div>
+                    <div class="col forecast card bg-dark text-white" id="day4"> <p id="upcomingday4"></p><div id="icon4"></div> <p id="temperature4"></p> <p id="humidity4"></p> <p id="wind4"></p> </div>
+                    <div class="col forecast card bg-dark text-white" id="day5"> <p id="upcomingday5"></p><div id="icon5"></div> <p id="temperature5"></p> <p id="humidity5"></p> <p id="wind5"></p> </div>
                 </div>
             </div>
         </div>
