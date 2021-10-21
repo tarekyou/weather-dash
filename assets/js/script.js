@@ -59,7 +59,7 @@ function weather(cityname){
                 iconEl.innerHTML = "";
                 iconEl.append(weatherIconEl);
                 // nameDivEl.append(weatherIconEl);
-                cityNameEl.textContent = searchedCityEl.value ;
+                cityNameEl.textContent = response.name ;
                 todayEl.textContent = moment().format("MMM Do YY");
                 temperatureEl.textContent = "Temperature: " + tempConversion(response.main.temp) + "F";
                 humidityEl.textContent = "Humidity: " +  response.main.humidity + "%";
@@ -150,14 +150,15 @@ function saveCities(){
     searchedCities.push(cityname);
     localStorage.setItem("cities", JSON.stringify(searchedCities));
     }
-    
+    loadCities();
     return searchedCities.value;
+    
     
 
 }
 
 function loadCities(){
-    // cityHistoryEl.innerHTML = "";
+    cityHistoryEl.innerHTML = "";
     var loadCities =   JSON.parse(localStorage.getItem("cities")) || [];
     // if(loadCities.length !==0){
     for (let i = 0; i < loadCities.length; i++) {
@@ -167,15 +168,15 @@ function loadCities(){
     
     var searchedHistoryEl = document.createElement("button");
     // searchedHistoryEl.classList.add("col-12");
-    searchedHistoryEl.setAttribute("type", "text");
+    // searchedHistoryEl.setAttribute("type", "text");
     // searchedHistoryEl.setAttribute("readonly", true);
     searchedHistoryEl.setAttribute("value", loadCities[i]);
     searchedHistoryEl.textContent = city;
     searchedHistoryEl.addEventListener("click", function(event){
-        
+        cityNameEl.innerHTML = "";
         weather(loadCities[i]);
-        cityNameEl.textContent = loadCities[i];
         event.preventDefault();
+        
     })
 //    var loadedCities =  JSON.parse(localStorage.getItem("cities"));
     // searchedHistoryEl = JSON.parse(localStorage.getItem("cities"));
@@ -197,7 +198,17 @@ function tempConversion(i){
     //  console.log(i);
      
 }
-
+function showHistory(){
+    var loadCities =   JSON.parse(localStorage.getItem("cities")) || [];
+    for (let i = 0; i < loadCities.length; i++){
+        loadCities.innerHTML= "li";
+        loadCities.setAttribute("value", loadCities[i])
+        cityHistoryEl.append(loadcities[i]);
+    }
+    
+    cityHistoryEl.textContent = loadCities;
+}
+// showHistory();
 
 loadCities();
 
